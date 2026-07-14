@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IntelliMobil - LXP IA-First para Mobilidade & Segurança de Frotas</title>
+  
+  <!-- Fontes Premium do Google (Outfit e Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2 family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            outfit: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              black: '#000000',
+              dark: '#0a0a0a',
+              darker: '#040404',
+              orange: '#f45000',
+              yellow: '#fb9400',
+              gray: '#8a8a8a',
+              lightGray: '#cccccc'
+            }
+          },
+          backgroundImage: {
+            'brand-gradient': 'linear-gradient(135deg, #f45000 0%, #fb9400 100%)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Efeitos Estéticos Futuristas -->
+  <style>
+    body {
+      background-color: #000000;
+      color: #FFFFFF;
+    }
+    .neon-glow-border {
+      border: 1px solid rgba(244, 80, 0, 0.2);
+      box-shadow: 0 0 15px rgba(244, 80, 0, 0.05), 0 0 15px rgba(244, 80, 0, 0.05) inset;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .neon-glow-border:hover {
+      border-color: rgba(251, 148, 0, 0.6);
+      box-shadow: 0 0 25px rgba(244, 80, 0, 0.2), 0 0 20px rgba(251, 148, 0, 0.1) inset;
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #f45000, #fb9400);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .glass-card {
+      background: rgba(10, 10, 10, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .bg-grid-glow {
+      background-size: 50px 50px;
+      background-image: 
+        linear-gradient(to right, rgba(244, 80, 0, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(244, 80, 0, 0.02) 1px, transparent 1px);
+    }
+    .ambient-sphere {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    /* Estilo de Scrollbar Premium */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #000000; }
+    ::-webkit-scrollbar-thumb { background: #f45000; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #fb9400; }
+    
+    /* Onda de voz simulada */
+    .voice-bar {
+      animation: wavePulse 1.2s ease-in-out infinite alternate;
+    }
+    @keyframes wavePulse {
+      0% { height: 4px; }
+      100% { height: 32px; }
+    }
+    
+    /* Efeito de destaque para links de suporte (Developer Panel) */
+    .glow-highlight {
+      outline: 4px solid #f45000 !important;
+      outline-offset: 4px;
+      box-shadow: 0 0 25px #f45000 !important;
+      animation: pulse-border 1.5s infinite alternate;
+    }
+    @keyframes pulse-border {
+      0% { box-shadow: 0 0 10px rgba(244, 80, 0, 0.5); }
+      100% { box-shadow: 0 0 30px rgba(251, 148, 0, 1); }
+    }
+  </style>
+</head>
+<body class="font-sans bg-brand-black text-white selection:bg-brand-orange selection:text-white overflow-x-hidden">
+
+  <!-- ==========================================
+       1. CABEÇALHO / NAVBAR (IntelliMobil)
+       ========================================== -->
+  <header class="fixed top-0 left-0 w-full z-50 glass-card border-b border-white/5 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- LOGO INTELLIMOBIL (Mapeado exatamente de acordo com image_a5558c.png) -->
+      <a href="#" class="flex items-center group relative z-10">
+        <div class="flex items-center space-x-2 border border-brand-orange/60 px-5 py-2 rounded-full bg-brand-black/90 shadow-[0_0_15px_rgba(244,80,0,0.2)]">
+          <span class="font-outfit font-extrabold text-xl tracking-tight">
+            <span class="text-white">Intelli</span><span class="text-brand-orange">Mobil</span>
+          </span>
+        </div>
+      </a>
+
+      <!-- NAV PRINCIPAL -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#sobre" class="text-brand-gray hover:text-brand-yellow transition-colors font-medium text-sm">Sobre Nós</a>
+        <a href="#solucoes" class="text-brand-gray hover:text-brand-yellow transition-colors font-medium text-sm">Soluções</a>
+        <a href="#catalogo" class="text-brand-gray hover:text-brand-yellow transition-colors font-medium text-sm">Catálogo de Cursos</a>
+        <a href="#plataforma" class="text-brand-gray hover:text-brand-yellow transition-colors font-medium text-sm">Plataforma LXP</a>
+        <a href="#analytics" class="text-brand-gray hover:text-brand-yellow transition-colors font-medium text-sm">Métricas de Atenção</a>
+        <a id="nav-blog" href="#link-blog-url-here" target="_blank" class="text-brand-gray hover:text-brand-yellow transition-colors font-medium text-sm">Blog</a>
+        <a id="nav-podcast" href="#link-podcast-url-here" target="_blank" class="text-brand-gray hover:text-brand-yellow transition-colors font-medium text-sm">Podcast</a>
+      </nav>
+
+      <!-- ACÇÕES ADICIONAIS -->
+      <div class="hidden lg:flex items-center space-x-6">
+        <a id="nav-aluno" href="#link-aluno-url-here" target="_blank" class="text-sm font-semibold hover:text-brand-yellow transition-all">Área do Aluno</a>
+        <a href="#contato" class="bg-brand-gradient hover:opacity-90 text-white px-5 py-2.5 rounded-lg font-outfit font-bold text-sm transition-all duration-300 flex items-center justify-center shadow-[0_0_15px_rgba(244,80,0,0.4)]">
+          Falar com COO
+        </a>
+      </div>
+
+      <!-- Mobile Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-t border-white/5 px-4 py-4 space-y-3">
+      <a href="#sobre" class="block text-brand-gray hover:text-brand-orange py-2 text-sm">Sobre Nós</a>
+      <a href="#solucoes" class="block text-brand-gray hover:text-brand-orange py-2 text-sm">Soluções</a>
+      <a href="#catalogo" class="block text-brand-gray hover:text-brand-orange py-2 text-sm">Catálogo de Cursos</a>
+      <a href="#plataforma" class="block text-brand-gray hover:text-brand-orange py-2 text-sm">Plataforma LXP</a>
+      <a id="mobile-blog" href="#link-blog-url-here" target="_blank" class="block text-brand-orange py-2 text-sm">Blog</a>
+      <a id="mobile-podcast" href="#link-podcast-url-here" target="_blank" class="block text-brand-orange py-2 text-sm">Podcast</a>
+      <div class="pt-4 border-t border-white/5 flex flex-col space-y-2">
+        <a id="mobile-aluno" href="#link-aluno-url-here" target="_blank" class="text-center text-white py-2 text-sm">Área do Aluno</a>
+        <a href="#contato" class="w-full bg-brand-gradient text-white text-center py-3 rounded-lg font-outfit font-semibold text-sm block">Fale Conosco</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       2. HERO SECTION (LXP IA-First de Mobilidade)
+       ========================================== -->
+  <section class="relative min-h-screen pt-24 flex items-center justify-center overflow-hidden bg-grid-glow">
+    
+    <!-- Esferas de Iluminação Ambiental -->
+    <div class="ambient-sphere bg-brand-orange/10 w-[600px] h-[600px] -top-20 -left-20"></div>
+    <div class="ambient-sphere bg-brand-yellow/10 w-[500px] h-[500px] bottom-0 right-10"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Textos Principais -->
+        <div class="lg:col-span-7 space-y-8 text-left">
+          <div class="inline-flex items-center space-x-2 bg-brand-dark border border-brand-orange/30 px-4 py-1.5 rounded-full">
+            <span class="w-2 h-2 rounded-full bg-brand-orange animate-ping"></span>
+            <span class="text-xs font-semibold tracking-wider uppercase font-outfit text-brand-yellow">1º LXP IA-First de Mobilidade do Brasil</span>
+          </div>
+
+          <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-outfit leading-[1.1]">
+            Plataforma LXP<br>com <span class="text-gradient">métricas reais</span> de atenção.
+          </h1>
+
+          <p class="text-lg sm:text-xl text-brand-gray font-light leading-relaxed max-w-2xl">
+            Cursos digitais humanizados sobre mobilidade corporativa de alta performance. Instrutores homologados pelo DETRAN em todo o Brasil e mapeamento de atenção por IA ativa.
+          </p>
+
+          <!-- Atributos do Sistema IntelliMobil -->
+          <div class="grid grid-cols-2 gap-4 pt-4">
+            <div class="flex items-center space-x-3 bg-white/5 border border-white/10 p-3 rounded-xl">
+              <span class="text-brand-orange text-xl font-bold">🚍</span>
+              <span class="text-sm font-semibold text-white/95">Homologação DETRAN</span>
+            </div>
+            <div class="flex items-center space-x-3 bg-white/5 border border-white/10 p-3 rounded-xl">
+              <span class="text-brand-yellow text-xl font-bold">🛡️</span>
+              <span class="text-sm font-semibold text-white/95">Métricas de Atenção Ativas</span>
+            </div>
+            <div class="flex items-center space-x-3 bg-white/5 border border-white/10 p-3 rounded-xl">
+              <span class="text-brand-orange text-xl font-bold">🗺️</span>
+              <span class="text-sm font-semibold text-white/95">Cobertura em 27 Estados</span>
+            </div>
+            <div class="flex items-center space-x-3 bg-white/5 border border-white/10 p-3 rounded-xl">
+              <span class="text-brand-yellow text-xl font-bold">📊</span>
+              <span class="text-sm font-semibold text-white/95">Análise Comportamental IA</span>
+            </div>
+          </div>
+
+          <!-- Ações do Hero -->
+          <div class="flex flex-wrap gap-4 pt-6">
+            <a href="#catalogo" class="bg-brand-gradient text-white px-8 py-4 rounded-lg font-outfit font-bold hover:shadow-[0_0_25px_rgba(244,80,0,0.5)] transition-all">
+              Explorar Catálogo de Cursos
+            </a>
+            <a id="hero-blog" href="#link-blog-url-here" target="_blank" class="glass-card hover:neon-glow-border text-white px-8 py-4 rounded-lg font-outfit font-semibold transition-all">
+              Acessar Blog
+            </a>
+            <a id="hero-podcast" href="#link-podcast-url-here" target="_blank" class="glass-card hover:neon-glow-border text-white px-8 py-4 rounded-lg font-outfit font-semibold transition-all">
+              Ouvir Podcast
+            </a>
+          </div>
+        </div>
+
+        <!-- Coluna de Mockups Dinâmicos (LXP Live Stream Mockup) -->
+        <div class="lg:col-span-5 relative flex justify-center items-center">
+          <div class="absolute inset-0 bg-brand-gradient blur-[140px] opacity-15 rounded-full"></div>
+          
+          <div class="relative w-full max-w-md space-y-4">
+            
+            <!-- Monitor LXP Live Ativo -->
+            <div class="neon-glow-border glass-card p-5 rounded-2xl relative transition-all duration-300">
+              <div class="flex justify-between items-center border-b border-white/10 pb-3 mb-4">
+                <div class="flex items-center space-x-2">
+                  <span class="w-3 h-3 bg-brand-orange rounded-full animate-pulse"></span>
+                  <span class="text-xs font-bold font-outfit text-white">IntelliMobil Live Monitor</span>
+                </div>
+                <span class="text-[10px] bg-brand-orange/10 text-brand-orange border border-brand-orange/30 px-2 py-0.5 rounded-full font-bold">CONEXÃO ATIVA</span>
+              </div>
+              <div class="flex items-center space-x-4">
+                <div class="w-16 h-16 rounded-xl bg-brand-black/80 flex items-center justify-center border border-white/10 text-3xl">
+                  👨‍✈️
+                </div>
+                <div>
+                  <h4 class="font-outfit font-bold text-white text-base">Mapeamento Comportamental</h4>
+                  <p class="text-xs text-brand-gray mt-1">Geração de score de risco para motoristas profissionais com base em engajamento ativo.</p>
+                </div>
+              </div>
+              
+              <!-- Simulação de Atenção do LXP -->
+              <div class="mt-4 pt-3 border-t border-white/10 flex justify-between items-center text-xs">
+                <span class="text-brand-gray">Foco Visivo do Aluno:</span>
+                <span class="text-brand-yellow font-bold font-mono">98.2% Ativo</span>
+              </div>
+            </div>
+
+            <!-- Box Estatístico Rápido -->
+            <div class="neon-glow-border glass-card p-5 rounded-2xl relative transition-all duration-300">
+              <div class="grid grid-cols-2 gap-4 text-center">
+                <div class="border-r border-white/10">
+                  <p class="text-2xl font-black text-brand-orange font-outfit">27</p>
+                  <p class="text-[10px] uppercase text-brand-gray font-bold tracking-wider">Estados do País</p>
+                </div>
+                <div>
+                  <p class="text-2xl font-black text-brand-yellow font-outfit">+500</p>
+                  <p class="text-[10px] uppercase text-brand-gray font-bold tracking-wider">Instrutores Homologados</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       3. SEÇÃO DE ESTATÍSTICAS (Métricas de Sucesso)
+       ========================================== -->
+  <section class="border-y border-white/10 bg-brand-darker relative z-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="space-y-1">
+          <p class="text-4xl lg:text-5xl font-extrabold text-brand-orange font-outfit">27</p>
+          <p class="text-xs font-semibold text-brand-gray uppercase tracking-wider">Estados Cobertos</p>
+        </div>
+        <div class="space-y-1">
+          <p class="text-4xl lg:text-5xl font-extrabold text-brand-yellow font-outfit">500+</p>
+          <p class="text-xs font-semibold text-brand-gray uppercase tracking-wider">Instrutores DETRAN</p>
+        </div>
+        <div class="space-y-1">
+          <p class="text-4xl lg:text-5xl font-extrabold text-brand-orange font-outfit">50k+</p>
+          <p class="text-xs font-semibold text-brand-gray uppercase tracking-wider">Condutores Capacitados</p>
+        </div>
+        <div class="space-y-1">
+          <p class="text-4xl lg:text-5xl font-extrabold text-brand-yellow font-outfit">200+</p>
+          <p class="text-xs font-semibold text-brand-gray uppercase tracking-wider">Empresas Atendidas</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       4. SEÇÃO "QUEM SOMOS" (A Força IntelliMobil)
+       ========================================== -->
+  <section id="sobre" class="py-24 bg-brand-black relative scroll-mt-20">
+    <div class="ambient-sphere bg-brand-orange/5 w-[600px] h-[600px] top-40 right-0"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        
+        <!-- Texto de Apresentação -->
+        <div class="lg:col-span-7 space-y-6 text-left">
+          <p class="text-xs font-bold uppercase tracking-widest text-brand-orange">SOBRE A INTELLIMOBIL</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-outfit leading-tight text-white">
+            A maior rede de capacitação veicular <br><span class="text-gradient">do Brasil corporativo.</span>
+          </h2>
+          <p class="text-brand-gray leading-relaxed text-base">
+            A IntelliMobil é a plataforma pioneira de capacitação veicular e mobilidade baseada em dados do Brasil. Nossa rede nacional de instrutores homologados pelo DETRAN permite levar treinamentos teóricos e de campo onde quer que sua frota de caminhões, furgões ou carros esteja.
+          </p>
+          <p class="text-brand-gray leading-relaxed text-base">
+            Utilizando nossa exclusiva plataforma LXP, aplicamos Inteligência Artificial para mapear o nível de atenção e engajamento dos condutores, assegurando um aprendizado realista e profundamente focado na redução definitiva de acidentes de trânsito.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 text-left">
+            <div class="flex items-center space-x-2.5">
+              <span class="text-brand-orange font-extrabold text-lg">✓</span>
+              <span class="text-white font-medium text-sm">Cobertura Física em Todo o País</span>
+            </div>
+            <div class="flex items-center space-x-2.5">
+              <span class="text-brand-yellow font-extrabold text-lg">✓</span>
+              <span class="text-white font-medium text-sm">Estrutura Homologada DETRAN</span>
+            </div>
+            <div class="flex items-center space-x-2.5">
+              <span class="text-brand-orange font-extrabold text-lg">✓</span>
+              <span class="text-white font-medium text-sm">LXP de Alta Performance Próprio</span>
+            </div>
+            <div class="flex items-center space-x-2.5">
+              <span class="text-brand-yellow font-extrabold text-lg">✓</span>
+              <span class="text-white font-medium text-sm">Score de Risco do Condutor</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Box de Valores/Pilares -->
+        <div class="lg:col-span-5">
+          <div class="glass-card p-8 rounded-2xl neon-glow-border space-y-8 relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-orange/20 blur-2xl rounded-full"></div>
+            
+            <div class="space-y-2 relative z-10 text-left">
+              <h3 class="text-2xl font-bold font-outfit text-white">Nossa Missão</h3>
+              <p class="text-brand-gray text-sm leading-relaxed">
+                Transformar a mobilidade nas rodovias e cidades através de treinamentos inteligentes, unindo tecnologia de IA ativa e a maior rede de instrutores humanos do país para preservar vidas.
+              </p>
+            </div>
+
+            <div class="space-y-6 border-t border-white/10 pt-6 relative z-10 text-left">
+              <div class="flex items-start space-x-3.5">
+                <div class="bg-white/5 p-2.5 rounded-lg text-brand-orange mt-1">
+                  🛡️
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white text-base">Preservação de Vidas</h4>
+                  <p class="text-xs text-brand-gray">Foco estratégico em mitigar sinistros graves.</p>
+                </div>
+              </div>
+              <div class="flex items-start space-x-3.5">
+                <div class="bg-white/5 p-2.5 rounded-lg text-brand-yellow mt-1">
+                  🚛
+                </div>
+                <div>
+                  <h4 class="font-semibold text-white text-base">Eficiência de Frotas</h4>
+                  <p class="text-xs text-brand-gray">Economia de combustível, freios e pneus através de condução defensiva ativa.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       5. SOLUÇÕES INTELLIMOBIL
+       ========================================== -->
+  <section id="solucoes" class="py-24 bg-brand-darker border-y border-white/5 scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-16">
+      
+      <div class="space-y-4 max-w-3xl mx-auto">
+        <p class="text-xs font-bold uppercase tracking-widest text-brand-orange">CONHEÇA NOSSOS PRODUTOS</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-outfit text-white">
+          Nossas Soluções de <span class="text-gradient">Capacitação</span>
+        </h2>
+        <p class="text-brand-gray text-sm leading-relaxed">
+          Do treinamento operacional direto em campo aos cursos inteligentes em nosso LXP de frotas, entregamos conformidade e segurança.
+        </p>
+      </div>
+
+      <!-- Grid Soluções -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+        
+        <!-- Solução 1 -->
+        <div class="bg-brand-black p-6 rounded-2xl border border-white/5 hover:neon-glow-border transition-all duration-300 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 bg-brand-orange/10 border border-brand-orange/30 rounded-xl flex items-center justify-center text-brand-orange text-xl font-bold">
+              01
+            </div>
+            <h3 class="font-outfit font-bold text-lg text-white">Treinamento Presencial</h3>
+            <p class="text-brand-gray text-xs leading-relaxed">
+              Instrutores credenciados DETRAN realizam aulas práticas e teóricas em campo, formatadas sob demanda para as particularidades da sua operação de frotas.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 flex items-center text-[10px] text-brand-yellow font-bold uppercase tracking-wider">
+            <span>Instrutores Homologados</span>
+          </div>
+        </div>
+
+        <!-- Solução 2 -->
+        <div class="bg-brand-black p-6 rounded-2xl border border-white/5 hover:neon-glow-border transition-all duration-300 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 bg-brand-yellow/10 border border-brand-yellow/30 rounded-xl flex items-center justify-center text-brand-yellow text-xl font-bold">
+              02
+            </div>
+            <h3 class="font-outfit font-bold text-lg text-white">Cursos Digitais Humanizados</h3>
+            <p class="text-brand-gray text-xs leading-relaxed">
+              Vídeo-aulas dinâmicas produzidas com didática corporativa de trânsito, conduzindo o motorista por imersões completas na segurança viária.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 flex items-center text-[10px] text-brand-orange font-bold uppercase tracking-wider">
+            <span>Didática Ativa e Prática</span>
+          </div>
+        </div>
+
+        <!-- Solução 3 -->
+        <div class="bg-brand-black p-6 rounded-2xl border border-white/5 hover:neon-glow-border transition-all duration-300 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 bg-brand-orange/10 border border-brand-orange/30 rounded-xl flex items-center justify-center text-brand-orange text-xl font-bold">
+              03
+            </div>
+            <h3 class="font-outfit font-bold text-lg text-white">Plataforma LXP IntelliMobil</h3>
+            <p class="text-brand-gray text-xs leading-relaxed">
+              O ecossistema digital moderno que unifica todos os cursos, gerando certificados de conclusão automáticos e integrando dados à sua telemetria.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 flex items-center text-[10px] text-brand-yellow font-bold uppercase tracking-wider">
+            <span>LXP IA-First Integrado</span>
+          </div>
+        </div>
+
+        <!-- Solução 4 -->
+        <div class="bg-brand-black p-6 rounded-2xl border border-white/5 hover:neon-glow-border transition-all duration-300 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="w-12 h-12 bg-brand-yellow/10 border border-brand-yellow/30 rounded-xl flex items-center justify-center text-brand-yellow text-xl font-bold">
+              04
+            </div>
+            <h3 class="font-outfit font-bold text-lg text-white">Telemetria Comportamental</h3>
+            <p class="text-brand-gray text-xs leading-relaxed">
+              Unimos os scores de direção da telemetria física aos resultados e avaliações do LXP, mapeando comportamentos de risco antes que eles causem acidentes.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 flex items-center text-[10px] text-brand-orange font-bold uppercase tracking-wider">
+            <span>Dados de Direção de Risco</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       6. CATÁLOGO DE CURSOS (Trilhas Baseadas na Apresentação)
+       ========================================== -->
+  <section id="catalogo" class="py-24 bg-brand-black bg-grid-glow scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 space-y-6 md:space-y-0 text-left">
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-brand-orange mb-2">CURRICULO PROFISSIONAL DE FROTAS</p>
+          <h2 class="text-4xl font-extrabold font-outfit text-white">
+            Nossos Cursos de <span class="text-gradient">Capacitação Ativa</span>
+          </h2>
+        </div>
+        
+        <!-- Categorias Rápidas -->
+        <div class="flex flex-wrap gap-2">
+          <button onclick="filterCatalog('Todos')" class="cat-filter-btn active bg-brand-orange text-white text-xs font-semibold px-4 py-2 rounded-lg transition-all">Todos</button>
+          <button onclick="filterCatalog('Condutores')" class="cat-filter-btn bg-brand-dark hover:bg-brand-orange/25 text-brand-gray hover:text-white text-xs font-semibold px-4 py-2 rounded-lg transition-all">Condutores</button>
+          <button onclick="filterCatalog('Lideranças')" class="cat-filter-btn bg-brand-dark hover:bg-brand-orange/25 text-brand-gray hover:text-white text-xs font-semibold px-4 py-2 rounded-lg transition-all">Gestores de Frota</button>
+          <button onclick="filterCatalog('Operações')" class="cat-filter-btn bg-brand-dark hover:bg-brand-orange/25 text-brand-gray hover:text-white text-xs font-semibold px-4 py-2 rounded-lg transition-all">Operacional</button>
+        </div>
+      </div>
+
+      <!-- Grid de Cursos Baseado no Slide 5 da Apresentação JSL/Nestlé -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+        
+        <!-- Curso 1 -->
+        <div class="catalog-item-card bg-brand-dark rounded-2xl border border-white/5 overflow-hidden hover:neon-glow-border transition-all duration-300" data-category="Condutores">
+          <div class="h-44 bg-neutral-900 relative">
+            <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover opacity-50" alt="Direção Defensiva">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent"></div>
+            <span class="absolute top-4 left-4 bg-brand-orange/80 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">DIREÇÃO DEFENSIVA</span>
+          </div>
+          <div class="p-6 space-y-4">
+            <div class="flex justify-between items-center text-xs text-brand-gray font-mono">
+              <span>🕒 2h 15m</span>
+              <span>• Ativo</span>
+            </div>
+            <h3 class="font-outfit font-bold text-lg text-white leading-snug">Direção Defensiva 4.0: Comportamento Seguro nas Rodovias</h3>
+            <p class="text-xs text-brand-gray leading-relaxed">Aprenda a analisar pontos de perigo na via, agir preventivamente contra imprudências alheias e minimizar sinistros em rodovias federais e estaduais.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-white/5 text-xs">
+              <span>Por: <strong class="text-white">Ricardo Albino</strong></span>
+              <button onclick="openModalCurso('Direção Defensiva 4.0')" class="text-brand-orange font-bold uppercase hover:text-brand-yellow">Visualizar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Curso 2 -->
+        <div class="catalog-item-card bg-brand-dark rounded-2xl border border-white/5 overflow-hidden hover:neon-glow-border transition-all duration-300" data-category="Lideranças">
+          <div class="h-44 bg-neutral-900 relative">
+            <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover opacity-50" alt="Gestão de Frotas">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent"></div>
+            <span class="absolute top-4 left-4 bg-brand-yellow/80 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">GESTAO DE FROTAS</span>
+          </div>
+          <div class="p-6 space-y-4">
+            <div class="flex justify-between items-center text-xs text-brand-gray font-mono">
+              <span>🕒 3h 20m</span>
+              <span>• Líderes</span>
+            </div>
+            <h3 class="font-outfit font-bold text-lg text-white leading-snug">Conexão e Gestão Logística: Telemetria Aplicada</h3>
+            <p class="text-xs text-brand-gray leading-relaxed">Capacitação de lideranças para integração de dados de tacógrafo e score de risco comportamental do motorista com o LXP IntelliMobil.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-white/5 text-xs">
+              <span>Por: <strong class="text-white">Marcelo Salgado</strong></span>
+              <button onclick="openModalCurso('Gestão Logística Ativa')" class="text-brand-orange font-bold uppercase hover:text-brand-yellow">Visualizar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Curso 3 -->
+        <div class="catalog-item-card bg-brand-dark rounded-2xl border border-white/5 overflow-hidden hover:neon-glow-border transition-all duration-300" data-category="Condutores">
+          <div class="h-44 bg-neutral-900 relative">
+            <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover opacity-50" alt="Gestão de Fadiga">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent"></div>
+            <span class="absolute top-4 left-4 bg-brand-orange/80 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">SAÚDE & COMPORTAMENTO</span>
+          </div>
+          <div class="p-6 space-y-4">
+            <div class="flex justify-between items-center text-xs text-brand-gray font-mono">
+              <span>🕒 2h 45m</span>
+              <span>• Ativo</span>
+            </div>
+            <h3 class="font-outfit font-bold text-lg text-white leading-snug">Gestão de Fadiga e Sono: O Fator Crítico no Volante</h3>
+            <p class="text-xs text-brand-gray leading-relaxed">Metodologias práticas e fisiológicas para detecção de sintomas de exaustão e sonolência, e a correta rotina de pausas em jornadas de longa distância.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-white/5 text-xs">
+              <span>Por: <strong class="text-white">Renata Oliveira</strong></span>
+              <button onclick="openModalCurso('Gestão de Fadiga')" class="text-brand-orange font-bold uppercase hover:text-brand-yellow">Visualizar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Curso 4 -->
+        <div class="catalog-item-card bg-brand-dark rounded-2xl border border-white/5 overflow-hidden hover:neon-glow-border transition-all duration-300" data-category="Operações">
+          <div class="h-44 bg-neutral-900 relative">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover opacity-50" alt="Carga Rodoviária">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent"></div>
+            <span class="absolute top-4 left-4 bg-brand-yellow/80 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">SEGURANÇA DE CARGA</span>
+          </div>
+          <div class="p-6 space-y-4">
+            <div class="flex justify-between items-center text-xs text-brand-gray font-mono">
+              <span>🕒 2h 10m</span>
+              <span>• Operacional</span>
+            </div>
+            <h3 class="font-outfit font-bold text-lg text-white leading-snug">Carregamento Seguro de Produtos Embalados JSL / Nestlé</h3>
+            <p class="text-xs text-brand-gray leading-relaxed">Conformidade e amarração estrutural de mercadorias em frotas rodoviárias de grande porte, visando a integridade e mitigação de perdas.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-white/5 text-xs">
+              <span>Por: <strong class="text-white">Patrícia Batista</strong></span>
+              <button onclick="openModalCurso('Carregamento Seguro')" class="text-brand-orange font-bold uppercase hover:text-brand-yellow">Visualizar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Curso 5 -->
+        <div class="catalog-item-card bg-brand-dark rounded-2xl border border-white/5 overflow-hidden hover:neon-glow-border transition-all duration-300" data-category="Condutores">
+          <div class="h-44 bg-neutral-900 relative">
+            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover opacity-50" alt="Direção Econômica">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent"></div>
+            <span class="absolute top-4 left-4 bg-brand-orange/80 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">CONDUÇÃO SUSTENTÁVEL</span>
+          </div>
+          <div class="p-6 space-y-4">
+            <div class="flex justify-between items-center text-xs text-brand-gray font-mono">
+              <span>🕒 2h 05m</span>
+              <span>• Ativo</span>
+            </div>
+            <h3 class="font-outfit font-bold text-lg text-white leading-snug">EcoDriving: Economia e Preservação Mecânica Viária</h3>
+            <p class="text-xs text-brand-gray leading-relaxed">Aprenda táticas para redução ativa de combustível em veículos pesados através da antecipação mecânica de descidas e frenagens de motor.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-white/5 text-xs">
+              <span>Por: <strong class="text-white">Ricardo Albino</strong></span>
+              <button onclick="openModalCurso('EcoDriving Ativo')" class="text-brand-orange font-bold uppercase hover:text-brand-yellow">Visualizar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Curso 6 -->
+        <div class="catalog-item-card bg-brand-dark rounded-2xl border border-white/5 overflow-hidden hover:neon-glow-border transition-all duration-300" data-category="Operações">
+          <div class="h-44 bg-neutral-900 relative">
+            <img src="https://images.unsplash.com/photo-1506015391300-4802dc74de2e?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover opacity-50" alt="Compliance de Trânsito">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent"></div>
+            <span class="absolute top-4 left-4 bg-brand-yellow/80 backdrop-blur-md text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">LEGISLAÇÃO & CONTRATOS</span>
+          </div>
+          <div class="p-6 space-y-4">
+            <div class="flex justify-between items-center text-xs text-brand-gray font-mono">
+              <span>🕒 2h 30m</span>
+              <span>• Operacional</span>
+            </div>
+            <h3 class="font-outfit font-bold text-lg text-white leading-snug">Compliance e Normativas de Condução e Responsabilidades</h3>
+            <p class="text-xs text-brand-gray leading-relaxed">Conformidade com a legislação federal trabalhista, regulamentos de repouso obrigatório e condutas éticas corporativas.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-white/5 text-xs">
+              <span>Por: <strong class="text-white">Renata Oliveira</strong></span>
+              <button onclick="openModalCurso('Compliance de Condutores')" class="text-brand-orange font-bold uppercase hover:text-brand-yellow">Visualizar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       7. PLATAFORMA LXP: DIFERENCIAIS DE ATENÇÃO (Slide 6 e 7)
+       ========================================== -->
+  <section id="plataforma" class="py-24 bg-brand-dark border-y border-white/5 relative scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center text-left">
+        
+        <!-- Esquerda: Informações Técnicas -->
+        <div class="lg:col-span-5 space-y-6">
+          <p class="text-xs font-bold uppercase tracking-widest text-brand-orange">TECNOLOGIA INTELIGENTE</p>
+          <h2 class="text-4xl font-extrabold font-outfit text-white">
+            Uma plataforma que<br>
+            <span class="text-gradient">mapeia a atenção.</span>
+          </h2>
+          <p class="text-brand-gray text-sm leading-relaxed">
+            Elimine a passividade dos treinamentos convencionais. No LXP IntelliMobil, as interações periódicas, validações de presença e análise de foco mantêm o condutor com atenção máxima ativa.
+          </p>
+
+          <div class="border-t border-white/10 pt-6 space-y-4">
+            <p class="text-xs font-bold text-brand-gray uppercase tracking-wider">Aproveitamento Médio da Jornada (Métricas JSL)</p>
+            
+            <div class="space-y-2">
+              <div class="flex justify-between text-xs">
+                <span>Engajamento em Vídeo-Aulas ao Vivo</span>
+                <span class="text-brand-orange">94%</span>
+              </div>
+              <div class="w-full bg-brand-black rounded-full h-1">
+                <div class="bg-brand-gradient h-1 rounded-full" style="width: 94%"></div>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <div class="flex justify-between text-xs">
+                <span>Fixação de Conteúdo de Direção Defensiva</span>
+                <span class="text-brand-yellow">88%</span>
+              </div>
+              <div class="w-full bg-brand-black rounded-full h-1">
+                <div class="bg-brand-gradient h-1 rounded-full" style="width: 88%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direita: Simulador de Interação e Mapeamento de Foco LXP -->
+        <div class="lg:col-span-7">
+          <div class="neon-glow-border glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+            
+            <div class="flex justify-between items-center border-b border-white/10 pb-4">
+              <div class="flex items-center space-x-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-xs font-bold font-outfit text-white">LXP Driver Simulator</span>
+              </div>
+              <span class="text-[10px] bg-brand-yellow/10 text-brand-yellow border border-brand-yellow/30 px-2.5 py-0.5 rounded font-mono">BETA 1.8</span>
+            </div>
+
+            <!-- Tela de Treinamento e Dilema de Direção (Slide 6) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Vídeo simulado de Direção -->
+              <div class="bg-brand-black p-4 rounded-xl border border-white/5 flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20 bg-grid-glow pointer-events-none"></div>
+                <div class="flex justify-between items-center z-10">
+                  <span class="text-[8px] font-bold text-brand-orange tracking-widest uppercase">CENÁRIO CRÍTICO</span>
+                  <span class="text-[8px] text-brand-gray font-mono">00:18</span>
+                </div>
+                <!-- Cenário -->
+                <p id="scenario-text" class="text-xs text-white/95 leading-relaxed font-outfit italic my-6 z-10">
+                  "Você está descendo uma serra com pista úmida. O caminhão à frente aciona as luzes de freio bruscamente."
+                </p>
+                <div class="flex justify-between items-center text-[10px] text-brand-gray z-10 pt-2 border-t border-white/5">
+                  <span>Avaliação IA ativa...</span>
+                  <span class="text-brand-yellow font-bold animate-pulse">LIVE FEED</span>
+                </div>
+              </div>
+
+              <!-- Escolha de Ação do Condutor -->
+              <div class="space-y-3 flex flex-col justify-center">
+                <p class="text-xs font-bold text-brand-gray uppercase tracking-wider">Qual sua primeira ação?</p>
+                
+                <button onclick="triggerLXPScenario('A', 'Reduzir marcha via freio motor')" class="w-full text-left bg-brand-dark hover:bg-brand-orange/10 border border-white/5 hover:border-brand-orange/40 p-3 rounded-lg transition-all text-xs">
+                  <strong class="text-white block font-outfit">A: Acionar freio motor e reduzir marchas</strong>
+                  <span class="text-brand-gray block text-[10px] mt-0.5">Evita superaquecimento de lonas e mantém controle</span>
+                </button>
+
+                <button onclick="triggerLXPScenario('B', 'Pisar bruscamente no freio')" class="w-full text-left bg-brand-dark hover:bg-brand-orange/10 border border-white/5 hover:border-brand-orange/40 p-3 rounded-lg transition-all text-xs">
+                  <strong class="text-white block font-outfit">B: Pisar fundo no freio de pedal imediatamente</strong>
+                  <span class="text-brand-gray block text-[10px] mt-0.5">Alto risco de travamento de rodas ou L-crossover</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Feedback da Resposta e Pontuação de Atenção -->
+            <div class="border-t border-white/10 pt-4 grid grid-cols-3 gap-4 text-center">
+              <div>
+                <p id="metric-attention" class="text-lg font-bold font-outfit text-brand-orange">98.4%</p>
+                <p class="text-[9px] text-brand-gray uppercase tracking-widest font-bold">Atenção Visiva</p>
+              </div>
+              <div>
+                <p id="metric-reaction" class="text-lg font-bold font-outfit text-brand-yellow">1.2s</p>
+                <p class="text-[9px] text-brand-gray uppercase tracking-widest font-bold">Tempo de Reação</p>
+              </div>
+              <div>
+                <p id="metric-compliance" class="text-lg font-bold font-outfit text-emerald-400">Excelente</p>
+                <p class="text-[9px] text-brand-gray uppercase tracking-widest font-bold">Score Geral</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       8. SEÇÃO: ANALYTICS E REPORTING (Slide 7 e 14)
+       ========================================== -->
+  <section id="analytics" class="py-24 bg-brand-black bg-grid-glow scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="space-y-4 max-w-3xl mx-auto text-center mb-16">
+        <p class="text-xs font-bold uppercase tracking-widest text-brand-orange">PAINEL INTEGRADO DE CONGESTÃO & SINISTROS</p>
+        <h2 class="text-4xl font-extrabold font-outfit text-white">
+          Analytics que Mostram <span class="text-gradient">Performance de Frotas</span>
+        </h2>
+        <p class="text-brand-gray text-sm font-light leading-relaxed">
+          Garantia de conformidade regulamentar em tempo real, mapeando o progresso, as pontuações e o tempo médio de atenção dos motoristas.
+        </p>
+      </div>
+
+      <!-- Grid de KPIs Dinâmicos -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8 text-left">
+        <div class="bg-brand-dark p-5 rounded-2xl border border-white/5">
+          <p class="text-[10px] text-brand-gray font-bold uppercase tracking-wider">Usuários Ativos (Mês)</p>
+          <div class="flex items-baseline space-x-3 mt-2">
+            <span class="text-3xl font-extrabold font-outfit text-white">1.842</span>
+            <span class="text-xs text-emerald-400 font-bold font-mono">+18%</span>
+          </div>
+          <p class="text-[9px] text-brand-gray mt-1">Comparado ao ciclo anterior</p>
+        </div>
+
+        <div class="bg-brand-dark p-5 rounded-2xl border border-white/5">
+          <p class="text-[10px] text-brand-gray font-bold uppercase tracking-wider">Conclusão de Cursos</p>
+          <div class="flex items-baseline space-x-3 mt-2">
+            <span class="text-3xl font-extrabold font-outfit text-brand-yellow">76%</span>
+            <span class="text-xs text-emerald-400 font-bold font-mono">+11%</span>
+          </div>
+          <p class="text-[9px] text-brand-gray mt-1">Média de trilhas regulamentares</p>
+        </div>
+
+        <div class="bg-brand-dark p-5 rounded-2xl border border-white/5">
+          <p class="text-[10px] text-brand-gray font-bold uppercase tracking-wider">Atenção Ativa Média</p>
+          <div class="flex items-baseline space-x-3 mt-2">
+            <span class="text-3xl font-extrabold font-outfit text-brand-orange">92.4%</span>
+            <span class="text-xs text-emerald-400 font-bold font-mono">+5%</span>
+          </div>
+          <p class="text-[9px] text-brand-gray mt-1">Medição biométrica por IA</p>
+        </div>
+
+        <div class="bg-brand-dark p-5 rounded-2xl border border-white/5">
+          <p class="text-[10px] text-brand-gray font-bold uppercase tracking-wider">Tempo Médio de Sessão</p>
+          <div class="flex items-baseline space-x-3 mt-2">
+            <span class="text-3xl font-extrabold font-outfit text-white">24m 32s</span>
+            <span class="text-xs text-emerald-400 font-bold font-mono">+9%</span>
+          </div>
+          <p class="text-[9px] text-brand-gray mt-1">Tempo útil ativo por aula</p>
+        </div>
+      </div>
+
+      <!-- Gráficos e Leaderboard JSL -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 text-left">
+        
+        <!-- Evolução de Performance - Simulação Gráfica SVG -->
+        <div class="lg:col-span-8 bg-brand-dark p-6 rounded-2xl border border-white/5 space-y-6">
+          <div class="flex justify-between items-center border-b border-white/5 pb-4">
+            <h3 class="font-outfit font-bold text-base text-white">Evolução do Score de Direção (Fev a Jul)</h3>
+            <span class="text-xs bg-white/5 px-2.5 py-1 rounded text-brand-gray border border-white/10">Últimos 6 meses</span>
+          </div>
+          
+          <div class="relative h-60 w-full flex items-end justify-between">
+            <div class="absolute inset-x-0 top-0 h-full flex flex-col justify-between pointer-events-none opacity-10">
+              <div class="border-b border-white w-full"></div>
+              <div class="border-b border-white w-full"></div>
+              <div class="border-b border-white w-full"></div>
+              <div class="border-b border-white w-full"></div>
+            </div>
+
+            <!-- Gráfico Realista de Linha SVG -->
+            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path d="M 0 85 Q 20 65, 40 45 T 80 25 T 100 15 L 100 100 L 0 100 Z" fill="url(#grad-orange)" opacity="0.15"></path>
+              <path d="M 0 85 Q 20 65, 40 45 T 80 25 T 100 15" fill="none" stroke="#f45000" stroke-width="2" stroke-linecap="round"></path>
+              <defs>
+                <linearGradient id="grad-orange" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#f45000"></stop>
+                  <stop offset="100%" stop-color="#000000" stop-opacity="0"></stop>
+                </linearGradient>
+              </defs>
+            </svg>
+
+            <!-- Legenda Meses -->
+            <div class="absolute inset-x-0 bottom-[-24px] flex justify-between text-[10px] text-brand-gray font-mono font-bold uppercase">
+              <span>Fev</span>
+              <span>Mar</span>
+              <span>Abr</span>
+              <span>Mai</span>
+              <span>Jun</span>
+              <span>Jul</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leaderboard dos Melhores Condutores (Slide 7) -->
+        <div class="lg:col-span-4 bg-brand-dark p-6 rounded-2xl border border-white/5 space-y-6">
+          <div class="flex justify-between items-center border-b border-white/5 pb-4">
+            <h3 class="font-outfit font-bold text-base text-white">Leaderboard JSL</h3>
+            <span class="text-[9px] bg-brand-orange/15 text-brand-orange px-2 py-0.5 rounded font-mono font-bold">Por Score Geral</span>
+          </div>
+
+          <div class="space-y-4">
+            <!-- Rank 1 -->
+            <div class="flex items-center justify-between p-2.5 rounded-lg bg-brand-darker border border-white/5">
+              <div class="flex items-center space-x-3">
+                <span class="text-brand-yellow font-bold text-sm">1º</span>
+                <span class="text-xs text-white/95 font-semibold font-outfit">Renata Martins</span>
+              </div>
+              <span class="text-xs font-mono text-emerald-400 font-bold">96%</span>
+            </div>
+
+            <!-- Rank 2 -->
+            <div class="flex items-center justify-between p-2.5 rounded-lg bg-brand-darker border border-white/5">
+              <div class="flex items-center space-x-3">
+                <span class="text-brand-orange font-bold text-sm">2º</span>
+                <span class="text-xs text-white/95 font-semibold font-outfit">João Victor</span>
+              </div>
+              <span class="text-xs font-mono text-emerald-400 font-bold">93%</span>
+            </div>
+
+            <!-- Rank 3 -->
+            <div class="flex items-center justify-between p-2.5 rounded-lg bg-brand-darker border border-white/5">
+              <div class="flex items-center space-x-3">
+                <span class="text-brand-orange font-bold text-sm">3º</span>
+                <span class="text-xs text-white/95 font-semibold font-outfit">Camila Souza</span>
+              </div>
+              <span class="text-xs font-mono text-emerald-400 font-bold">91%</span>
+            </div>
+
+            <!-- Rank 4 -->
+            <div class="flex items-center justify-between p-2.5 rounded-lg bg-brand-darker border border-white/5">
+              <div class="flex items-center space-x-3">
+                <span class="text-brand-gray font-bold text-sm">4º</span>
+                <span class="text-xs text-white/95 font-semibold font-outfit">Rafael Costa</span>
+              </div>
+              <span class="text-xs font-mono text-brand-gray">88%</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       9. SEGURANÇA & COMPLIANCE (Slide 20)
+       ========================================== -->
+  <section class="py-24 bg-brand-darker border-y border-white/5 scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Esquerda: Informações de Segurança -->
+        <div class="lg:col-span-5 space-y-6 text-left">
+          <p class="text-xs font-bold uppercase tracking-widest text-brand-orange">CONFORMIDADE CORPORATIVA</p>
+          <h2 class="text-4xl font-extrabold font-outfit text-white">
+            Segurança da informação,<br>
+            <span class="text-gradient">conforme LGPD.</span>
+          </h2>
+          <p class="text-brand-gray text-sm leading-relaxed">
+            Arquitetura resiliente de dados, multi-tenant com total isolamento em nível de tabela (RLS). Nossos processos são auditados para garantir integridade e due diligence impecáveis.
+          </p>
+        </div>
+
+        <!-- Direita: Checklist de Segurança (Slide 20) -->
+        <div class="lg:col-span-7">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+            
+            <div class="bg-brand-black p-5 rounded-2xl border border-white/5 space-y-2">
+              <span class="text-xl">🛡️</span>
+              <h4 class="font-outfit font-bold text-sm text-white">Multi-tenant com RLS</h4>
+              <p class="text-[11px] text-brand-gray leading-relaxed">Isolamento completo e lógico dos dados entre portais corporativos de diferentes frotas.</p>
+            </div>
+
+            <div class="bg-brand-black p-5 rounded-2xl border border-white/5 space-y-2">
+              <span class="text-xl">⚙️</span>
+              <h4 class="font-outfit font-bold text-sm text-white">Operadores Certificados</h4>
+              <p class="text-[11px] text-brand-gray leading-relaxed">Infraestrutura construída sobre Vercel, Neon DB, Clerk e Google Cloud Engine.</p>
+            </div>
+
+            <div class="bg-brand-black p-5 rounded-2xl border border-white/5 space-y-2">
+              <span class="text-xl">🔒</span>
+              <h4 class="font-outfit font-bold text-sm text-white">Criptografia Forte</h4>
+              <p class="text-[11px] text-brand-gray leading-relaxed">Utilização de chaves TLS 1.2+ em trânsito e criptografia AES-256 em repouso absoluto.</p>
+            </div>
+
+            <div class="bg-brand-black p-5 rounded-2xl border border-white/5 space-y-2">
+              <span class="text-xl">📄</span>
+              <h4 class="font-outfit font-bold text-sm text-white">Auditoria de Segurança</h4>
+              <p class="text-[11px] text-brand-gray leading-relaxed">Relatórios de compliance anuais de segurança e testes periódicos de intrusão lógica.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       10. CONTATO E PROPOSTA COMERCIAL (Slide 21)
+       ========================================== -->
+  <section id="contato" class="py-24 bg-brand-black border-t border-white/10 scroll-mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        
+        <!-- Contato Esquerda: Ricardo Bifulco (COO) -->
+        <div class="space-y-10 text-left">
+          <div class="space-y-4">
+            <p class="text-xs font-bold uppercase tracking-widest text-brand-orange">DÚVIDAS OU ORÇAMENTO?</p>
+            <h2 class="text-4xl font-extrabold font-outfit text-white">
+              Sua frota mais segura e integrada na <span class="text-gradient">era da IA.</span>
+            </h2>
+            <p class="text-brand-gray text-sm leading-relaxed max-w-md">
+              Entre em contato direto com nossa diretoria comercial para alinhar o modelo de licenciamento de acordo com o tamanho operacional da sua frota.
+            </p>
+          </div>
+
+          <!-- Informações de Contato Comercial (Slide 21) -->
+          <div class="p-6 bg-brand-dark border border-white/10 rounded-2xl space-y-6 max-w-sm">
+            <div class="flex items-center space-x-4">
+              <div class="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/30 flex items-center justify-center font-bold text-xl text-brand-orange">
+                👨‍💼
+              </div>
+              <div>
+                <h4 class="font-outfit font-bold text-white text-base">Ricardo Bifulco</h4>
+                <p class="text-xs text-brand-gray">COO IntelliMobil</p>
+              </div>
+            </div>
+
+            <div class="space-y-3 border-t border-white/5 pt-4 text-xs">
+              <div class="flex justify-between">
+                <span class="text-brand-gray">Telefone Comercial:</span>
+                <a href="tel:5511992575750" class="text-white hover:text-brand-yellow font-mono font-bold">11 99257-5750</a>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-brand-gray">E-mail:</span>
+                <a href="mailto:comercial@intellicreate.online" class="text-white hover:text-brand-yellow font-mono font-bold">comercial@intellicreate.online</a>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-brand-gray">Website:</span>
+                <a href="https://www.intellicreate.online" target="_blank" class="text-white hover:text-brand-yellow font-mono font-bold">www.intellicreate.online</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulário de Leads Corporativo -->
+        <div class="bg-brand-dark p-8 rounded-3xl border border-brand-orange/30 shadow-[0_0_20px_rgba(244,80,0,0.08)]">
+          <form id="contact-commercial-form" class="space-y-4" onsubmit="event.preventDefault(); triggerLeadConversion();">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input type="text" placeholder="Nome Completo" required class="w-full bg-brand-black border border-white/10 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-brand-orange text-sm transition-all">
+              <input type="text" placeholder="Empresa" required class="w-full bg-brand-black border border-white/10 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-brand-orange text-sm transition-all">
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input type="email" placeholder="E-mail Corporativo" required class="w-full bg-brand-black border border-white/10 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-brand-orange text-sm transition-all">
+              <input type="tel" placeholder="Telefone Comercial" required class="w-full bg-brand-black border border-white/10 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-brand-orange text-sm transition-all">
+            </div>
+            <textarea rows="4" placeholder="Como o IntelliMobil pode apoiar sua operação de frotas hoje?" required class="w-full bg-brand-black border border-white/10 text-white px-4 py-3 rounded-lg focus:outline-none focus:border-brand-orange text-sm transition-all"></textarea>
+            
+            <button type="submit" class="w-full bg-brand-gradient text-white py-4 rounded-lg font-outfit font-extrabold uppercase tracking-wider text-sm hover:opacity-90 transition-all hover:shadow-[0_0_20px_rgba(244,80,0,0.4)]">
+              Enviar Proposta de Conexão
+            </button>
+          </form>
+          
+          <div id="contact-success-toast" class="hidden mt-4 text-center text-sm text-green-400 font-semibold bg-green-400/10 py-3 rounded-lg border border-green-400/20">
+            Sua solicitação de conexão foi processada! Nossa assessoria de frotas entrará em contato em breve.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       11. FOOTER
+       ========================================== -->
+  <footer class="bg-brand-black border-t border-white/10 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 pb-12 border-b border-white/5 text-left">
+        
+        <!-- Logo e Atribuições -->
+        <div class="space-y-4">
+          <div class="flex items-center">
+            <div class="flex items-center space-x-2 border border-brand-orange/60 px-4 py-1.5 rounded-full bg-brand-black/90">
+              <span class="font-outfit font-extrabold text-base tracking-tight">
+                <span class="text-white">Intelli</span><span class="text-brand-orange">Mobil</span>
+              </span>
+            </div>
+          </div>
+          <p class="text-brand-gray text-xs leading-relaxed max-w-sm">
+            Inteligência de dados aplicada à capacitação de motoristas e otimização operacional de frotas comerciais.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <h4 class="font-outfit font-bold text-xs tracking-widest text-brand-orange uppercase">Soluções</h4>
+          <ul class="space-y-2 text-brand-gray text-sm">
+            <li><a href="#solucoes" class="hover:text-white transition-colors">Treinamentos Práticos</a></li>
+            <li><a href="#solucoes" class="hover:text-white transition-colors">Cursos Humanizados</a></li>
+            <li><a href="#plataforma" class="hover:text-white transition-colors">LXP IntelliMobil</a></li>
+            <li><a href="#solucoes" class="hover:text-white transition-colors">Métricas Biométricas</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-4">
+          <h4 class="font-outfit font-bold text-xs tracking-widest text-brand-orange uppercase">Comunidade</h4>
+          <ul class="space-y-2 text-brand-gray text-sm">
+            <li><a id="footer-blog" href="#link-blog-url-here" target="_blank" class="hover:text-white transition-colors font-semibold">Blog</a></li>
+            <li><a id="footer-podcast" href="#link-podcast-url-here" target="_blank" class="hover:text-white transition-colors font-semibold">Podcast</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-4">
+          <h4 class="font-outfit font-bold text-xs tracking-widest text-brand-orange uppercase">Operações JSL</h4>
+          <ul class="space-y-2 text-brand-gray text-sm">
+            <li>comercial@intellicreate.online</li>
+            <li>11 99257-5750</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-brand-gray/50 text-left">
+        <p>© 2026 IntelliMobil Platform. Todos os direitos reservados.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="hover:text-brand-gray transition-colors">LGPD & Termos de Uso</a>
+          <a href="#" class="hover:text-brand-gray transition-colors">Políticas de Segurança</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       MODAL DE CURSO (Visualizador LXP)
+       ========================================== -->
+  <div id="course-details-modal" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+    <div class="bg-brand-dark rounded-2xl border border-brand-orange/30 max-w-md w-full p-6 space-y-6 text-left relative">
+      <button onclick="closeModalCurso()" class="absolute top-4 right-4 text-brand-gray hover:text-white text-lg">✕</button>
+      
+      <div class="space-y-2">
+        <span class="text-[9px] bg-brand-orange/25 text-brand-orange border border-brand-orange/30 px-2.5 py-0.5 rounded font-mono font-bold">INFO DO PORTAL</span>
+        <h4 id="modal-course-title" class="font-outfit font-bold text-white text-xl">Título do Curso</h4>
+        <p id="modal-course-desc" class="text-xs text-brand-gray leading-relaxed">Trilha otimizada gerada por IA na plataforma da IntelliMobil.</p>
+      </div>
+
+      <div class="space-y-3 border-t border-white/5 pt-4">
+        <div class="flex justify-between text-xs">
+          <span class="text-brand-gray">Status do Curso:</span>
+          <span class="text-emerald-400 font-bold uppercase">Publicado</span>
+        </div>
+        <div class="flex justify-between text-xs">
+          <span class="text-brand-gray">Instrutor Homologado:</span>
+          <span class="text-white font-semibold">DETRAN Brasil</span>
+        </div>
+        <div class="flex justify-between text-xs">
+          <span class="text-brand-gray">Métricas de Foco:</span>
+          <span class="text-brand-yellow font-semibold">Ativas por Biometria</span>
+        </div>
+      </div>
+
+      <button onclick="closeModalCurso()" class="w-full bg-brand-gradient text-white py-3 rounded-lg font-outfit font-bold uppercase text-xs tracking-wider">
+        Fechar Detalhes
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       PAINEL DE AJUDA DO DESENVOLVEDOR (DARK MODE)
+       ========================================== -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <button id="guide-toggle-btn" class="bg-brand-orange hover:bg-brand-yellow text-white p-4 rounded-full shadow-[0_0_20px_rgba(244,80,0,0.5)] flex items-center justify-center transition-all duration-300 hover:scale-110">
+      <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    </button>
+
+    <div id="guide-drawer" class="hidden absolute bottom-20 right-0 w-96 max-w-[calc(100vw-3rem)] bg-brand-dark text-white rounded-2xl p-6 shadow-2xl border border-white/10 space-y-4 text-left">
+      <div class="flex justify-between items-center border-b border-white/10 pb-3">
+        <h4 class="font-outfit font-bold text-brand-orange text-lg">Guia de Configuração</h4>
+        <button id="guide-close-btn" class="text-brand-gray hover:text-white">✕</button>
+      </div>
+      <div class="space-y-3">
+        <p class="text-xs text-brand-gray leading-relaxed">
+          Localize facilmente onde inserir as URLs do <strong>Blog</strong>, <strong>Podcast</strong> e <strong>Área do Aluno</strong>.
+        </p>
+        <button id="guide-highlight-btn" class="w-full bg-brand-gradient hover:opacity-90 text-white py-2.5 rounded-lg text-xs font-bold transition-all duration-300">
+          💡 DESTACAR LINKS
+        </button>
+      </div>
+      <div class="space-y-4 pt-3 border-t border-white/10 max-h-64 overflow-y-auto pr-2">
+        <div class="space-y-1.5">
+          <p class="text-xs font-bold text-brand-orange uppercase">📰 Blog</p>
+          <p class="text-[10px] text-brand-gray bg-brand-black p-1.5 rounded border border-white/5">IDs: <code>nav-blog</code>, <code>hero-blog</code>, <code>footer-blog</code>, <code>mobile-blog</code></p>
+        </div>
+        <div class="space-y-1.5">
+          <p class="text-xs font-bold text-brand-orange uppercase">🎙️ Podcast</p>
+          <p class="text-[10px] text-brand-gray bg-brand-black p-1.5 rounded border border-white/5">IDs: <code>nav-podcast</code>, <code>hero-podcast</code>, <code>footer-podcast</code>, <code>mobile-podcast</code></p>
+        </div>
+        <div class="space-y-1.5">
+          <p class="text-xs font-bold text-brand-orange uppercase">🎓 Área do Aluno</p>
+          <p class="text-[10px] text-brand-gray bg-brand-black p-1.5 rounded border border-white/5">IDs: <code>nav-aluno</code>, <code>mobile-aluno</code></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       INTEGRAÇÃO SCRIPT - ESTADOS E COMPORTAMENTOS
+       ========================================== -->
+  <script>
+    // Menu mobile toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // 1. FILTRAR CATÁLOGO DE CURSOS
+    function filterCatalog(category) {
+      const buttons = document.querySelectorAll('.cat-filter-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('active', 'bg-brand-orange', 'text-white');
+        btn.classList.add('bg-brand-dark', 'text-brand-gray');
+      });
+
+      // Ativa o botão correspondente
+      event.target.classList.add('active', 'bg-brand-orange', 'text-white');
+      event.target.classList.remove('bg-brand-dark', 'text-brand-gray');
+
+      const cards = document.querySelectorAll('.catalog-item-card');
+      cards.forEach(card => {
+        if (category === 'Todos' || card.getAttribute('data-category') === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    // 2. RAMIFICAÇÃO INTERATIVA DE CENÁRIO LXP
+    function triggerLXPScenario(option, text) {
+      const scenarioTextElement = document.getElementById('scenario-text');
+      const attention = document.getElementById('metric-attention');
+      const reaction = document.getElementById('metric-reaction');
+      const compliance = document.getElementById('metric-compliance');
+
+      if (option === 'A') {
+        scenarioTextElement.textContent = `"Excelente escolha. O freio motor reduziu a velocidade de forma gradual, mantendo a estabilidade nas rodas traseiras e evitando aquecimento."`;
+        attention.textContent = "99.1%";
+        reaction.textContent = "1.0s";
+        compliance.textContent = "Excelente";
+        compliance.className = "text-lg font-bold font-outfit text-emerald-400";
+      } else {
+        scenarioTextElement.textContent = `"Atenção! A frenagem brusca com pista úmida iniciou o travamento de rodas. O sistema ABS tentou compensar, mas houve leve desvio."`;
+        attention.textContent = "84.5%";
+        reaction.textContent = "1.8s";
+        compliance.textContent = "Risco Médio";
+        compliance.className = "text-lg font-bold font-outfit text-brand-orange";
+      }
+    }
+
+    // 3. TOASTS E LEADS
+    function triggerLeadConversion() {
+      const form = document.getElementById('contact-commercial-form');
+      const toast = document.getElementById('contact-success-toast');
+
+      form.classList.add('hidden');
+      toast.classList.remove('hidden');
+
+      setTimeout(() => {
+        form.reset();
+        form.classList.remove('hidden');
+        toast.classList.add('hidden');
+      }, 5000);
+    }
+
+    // Modal Controle
+    function openModalCurso(title) {
+      document.getElementById('course-details-modal').classList.remove('hidden');
+      document.getElementById('modal-course-title').textContent = title;
+    }
+
+    function closeModalCurso() {
+      document.getElementById('course-details-modal').classList.add('hidden');
+    }
+
+    // Lógica do Painel de Ajuda Flutuante
+    const guideBtn = document.getElementById('guide-toggle-btn');
+    const guideDrawer = document.getElementById('guide-drawer');
+    const guideClose = document.getElementById('guide-close-btn');
+    const highlightBtn = document.getElementById('guide-highlight-btn');
+
+    guideBtn.addEventListener('click', () => {
+      guideDrawer.classList.toggle('hidden');
+    });
+
+    guideClose.addEventListener('click', () => {
+      guideDrawer.classList.add('hidden');
+    });
+
+    // Função de Brilho nos links indicados
+    highlightBtn.addEventListener('click', () => {
+      const targets = [
+        'nav-blog', 'nav-podcast', 'nav-aluno',
+        'hero-blog', 'hero-podcast', 
+        'mobile-blog', 'mobile-podcast', 'mobile-aluno',
+        'footer-blog', 'footer-podcast'
+      ];
+
+      let isGlowOn = false;
+
+      targets.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.classList.toggle('glow-highlight');
+          if (el.classList.contains('glow-highlight')) {
+            isGlowOn = true;
+          }
+        }
+      });
+
+      if (isGlowOn) {
+        highlightBtn.textContent = '🛑 DESATIVAR DESTAQUES';
+        highlightBtn.classList.remove('bg-brand-gradient');
+        highlightBtn.classList.add('bg-red-600');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        highlightBtn.textContent = '💡 DESTACAR LINKS';
+        highlightBtn.classList.remove('bg-red-600');
+        highlightBtn.classList.add('bg-brand-gradient');
+      }
+    });
+  </script>
+</body>
+</html>
